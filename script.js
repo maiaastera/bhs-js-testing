@@ -111,3 +111,129 @@ function left2(word){
     answer = word.substring(2) + left;
     return answer;
 }
+
+function firstLast6(array){
+    if(array[0] === 6 || array[array.length - 1] === 6){
+        return true;
+    } else{
+        return false;
+    }
+}
+
+function has23(array){
+    if((array[0] === 2||array[0]===3)||(array[1]===2 || array[1]===3)){
+        return true;
+    } else{
+        return false;
+    }
+}
+
+function fix23(a){
+    var check = a.lastIndexOf(2);
+    var three = a.indexOf(3);
+    if(check > -1 && three > -1 && check === three - 1){
+        a.splice(three, 1, 0);
+        return a;
+    } else{
+        return a;
+    }
+}
+
+function countYZ(str){
+    var ySearch = (str.toUpperCase()).match(/Y \b/g) || [];
+    var zSearch = (str.toUpperCase()).match(/Z \b/g) || []; 
+
+    if((str.toUpperCase()).endsWith("Y")){
+        ySearch = ySearch + 1;
+    } else if((str.toUpperCase()).endsWith("Z")){
+        zSearch = zSearch + 1;
+    }
+    return ySearch.length + zSearch.length;
+}
+
+function endOther(str, str2){
+    if((str.toLowerCase()).endsWith(str2.toLowerCase()) || (str2.toLowerCase()).endsWith(str.toLowerCase())){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function starOut(str){
+    var answer = "";
+    var star = 0;
+    var x = 0;
+    for(let i = 0; i < str.length; i++){
+        if((str.substring(i-1, i+2)).includes("*")){
+        } else{
+            answer += str.substring(i, i+1);
+        }
+    }
+    return answer;
+}
+
+function getSandwich(str){
+    if((str.match(/bread/g))){
+        let ans = str.slice(str.indexOf("bread")+5, str.lastIndexOf("bread"));
+        return ans;
+    } else{
+        return "";
+    }
+}
+
+function canBalance(a){
+    var total = 0;
+    var left = 0;
+    function box(val){total = total + val}
+    a.forEach(box) //gets the total
+    if(total % 2 === 0){
+        for(let i = 0; i < a.length; i++){
+            if(left === total-left){
+
+            } else {
+                left += a[i]
+            }
+        }
+        if(left === total - left){
+            return true;
+        }else{
+            return false;
+        }
+    } else{
+        return false;
+    }
+}
+
+function countClumps(a){
+    var count = 0;
+    for(let i = 0; i < a.length; i++){
+        if(a[i]===a[i-1] && a[i] !== a[i+1]){
+            count = count+1;
+        }
+    }
+    return count;
+}
+
+function sameEnds(str){
+    var right = "";
+    var left = "";
+    var ans = "";
+    if(str.length % 2 === 1){
+        for(let i = 0; i < (str.length/2)-.5; i++){
+            left = str.substring(0, i+1);
+            right = str.substring(str.length-(i+1));
+            if(left===right){
+                ans=right;
+            }
+        }
+    } else{
+        for(let i = 0; i < str.length/2; i++){
+            left = str.substring(0, i+1);
+            right = str.substring(str.length-(i+1));
+            if(left===right){
+                ans=right;
+            }
+        }
+    }
+    return ans;
+}
